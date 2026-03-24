@@ -638,6 +638,80 @@ img, svg {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
+/* =========================================
+   Team Page Additions (T3chNexus Scope)
+   ========================================= */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+
+.team-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.team-photo-container {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    overflow: hidden;
+    background-color: var(--color-teal-light);
+}
+
+.team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Crop framing for left-aligned Instagram posts */
+.photo-left {
+    object-position: 20% center;
+}
+
+/* Crop framing for centered LinkedIn/Headshot posts */
+.photo-center {
+    object-position: center center;
+}
+
+.team-info {
+    padding: 1.5rem;
+}
+
+.team-info h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+    font-size: 1.5rem;
+}
+
+.team-role {
+    color: var(--color-red);
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.team-bio {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
 .fade-in-up.visible {
   opacity: 1;
   transform: translateY(0);
