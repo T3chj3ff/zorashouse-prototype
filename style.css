@@ -517,7 +517,8 @@ img, svg {
 /* Footer */
 .site-footer {
   background-color: var(--color-dark);
-  color: var(--color-text-light);
+  /* #CBD5E1 on #1E293B = ~8.2:1 contrast ratio — WCAG AA + AAA pass */
+  color: #CBD5E1;
   padding: var(--spacing-lg) 0 var(--spacing-md);
 }
 
@@ -530,6 +531,7 @@ img, svg {
 .footer-brand p {
   margin-top: var(--spacing-sm);
   max-width: 300px;
+  color: #CBD5E1; /* explicit for specificity */
 }
 
 .footer-links h3 {
@@ -544,14 +546,22 @@ img, svg {
 
 .footer-links li {
   margin-bottom: 0.5rem;
+  color: #CBD5E1;
 }
 
 .footer-links a {
-  color: var(--color-text-light);
+  /* #CBD5E1 on #1E293B = ~8.2:1 — WCAG AA pass */
+  color: #CBD5E1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a:focus {
   color: var(--color-white);
+  text-decoration-color: var(--color-white);
 }
 
 /* --- Animations --- */
