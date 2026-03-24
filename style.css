@@ -163,11 +163,11 @@ img, svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 1.125rem;
   cursor: pointer;
   transition: all var(--transition-fast);
   border: 2px solid transparent;
@@ -186,7 +186,8 @@ img, svg {
 }
 
 .btn-secondary {
-  background-color: var(--color-accent);
+  /* Darker teal for >4.5:1 contrast against white text */
+  background-color: #115E59;
   color: var(--color-white);
 }
 
@@ -524,7 +525,8 @@ img, svg {
 
 .program-tag.highlight {
   background: var(--color-accent-light);
-  color: var(--color-accent);
+  /* Darker teal for >4.5:1 contrast against light teal bg */
+  color: #115E59;
 }
 
 .program-title {
