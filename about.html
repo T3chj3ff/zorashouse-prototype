@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <!-- Skip to main content (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="noise-overlay" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container header-container">
@@ -15,19 +17,22 @@
                 <span class="logo-zora">ZORA'S</span>
                 <span class="logo-house">HOUSE</span>
             </a>
-            <nav class="main-nav" aria-label="Main Navigation">
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="nav-links">
-                    <li><a href="about.html" style="color: var(--color-primary)">About</a></li>
+                    <li><a href="about.html" aria-current="page">About</a></li>
                     <li><a href="index.html#pillars">Impact Focus</a></li>
                     <li><a href="programs.html">Programs</a></li>
                     <li><a href="membership.html">Membership</a></li>
                 </ul>
-                <a href="membership.html" class="btn btn-primary" aria-label="Join Us or Donate">Join Us</a>
+                <a href="membership.html" class="btn btn-primary">Join Us</a>
             </nav>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+                &#9776;
+            </button>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero" style="min-height: 60vh;">
             <div class="hero-bg-shapes"></div>
             <!-- Offset background photography blending into Mesh Gradient -->
@@ -82,5 +87,15 @@
         </div>
     </footer>
     <script type="module" src="/main.js"></script>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+    </script>
 </body>
 </html>

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <!-- Skip to main content (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="noise-overlay" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container header-container">
@@ -15,19 +17,22 @@
                 <span class="logo-zora">ZORA'S</span>
                 <span class="logo-house">HOUSE</span>
             </a>
-            <nav class="main-nav" aria-label="Main Navigation">
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="nav-links">
                     <li><a href="about.html">About</a></li>
                     <li><a href="index.html#pillars">Impact Focus</a></li>
-                    <li><a href="programs.html" style="color: var(--color-primary)">Programs</a></li>
+                    <li><a href="programs.html" aria-current="page">Programs</a></li>
                     <li><a href="membership.html">Membership</a></li>
                 </ul>
-                <a href="membership.html" class="btn btn-primary" aria-label="Join Us or Donate">Join Us</a>
+                <a href="membership.html" class="btn btn-primary">Join Us</a>
             </nav>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+                &#9776;
+            </button>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero" style="min-height: 50vh;">
             <div class="hero-bg-shapes"></div>
             <!-- Offset background photography blending into Mesh Gradient -->
@@ -45,21 +50,21 @@
                         <span class="program-tag">Fellowship</span>
                         <h3>Leadership Fellows</h3>
                         <p>A transformative 6-month experiential leadership program for dynamic women of color leveraging social justice education.</p>
-                        <a href="#" class="link-arrow" aria-label="Apply for Leadership Fellows">Apply Now <span aria-hidden="true">&rarr;</span></a>
+                        <a href="membership.html" class="link-arrow">Apply Now <span aria-hidden="true">&rarr;</span></a>
                     </article>
                     
                     <article class="pillar-card fade-in-up delay-1">
                         <span class="program-tag highlight">Community</span>
                         <h3>WoCO Market</h3>
                         <p>Our bi-annual market featuring 175+ vendors and over 6,000 shoppers, centering WOC+ consumer product businesses.</p>
-                        <a href="#" class="link-arrow" aria-label="Vendor Application for WoCO Market">Vendor App <span aria-hidden="true">&rarr;</span></a>
+                        <a href="membership.html" class="link-arrow">Vendor App <span aria-hidden="true">&rarr;</span></a>
                     </article>
 
                     <article class="pillar-card fade-in-up delay-2">
                         <span class="program-tag">Financial</span>
                         <h3>Wealth Builders</h3>
                         <p>A financial literacy program targeting first-generation wealth builders, providing culturally competent financial planning.</p>
-                        <a href="#" class="link-arrow" aria-label="Join Cohort for Wealth Builders">Join Cohort <span aria-hidden="true">&rarr;</span></a>
+                        <a href="membership.html" class="link-arrow">Join Cohort <span aria-hidden="true">&rarr;</span></a>
                     </article>
                 </div>
             </div>
@@ -87,5 +92,15 @@
         </div>
     </footer>
     <script type="module" src="/main.js"></script>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+    </script>
 </body>
 </html>

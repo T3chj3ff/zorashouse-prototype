@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <!-- Skip to main content (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="noise-overlay" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container header-container">
@@ -15,19 +17,22 @@
                 <span class="logo-zora">ZORA'S</span>
                 <span class="logo-house">HOUSE</span>
             </a>
-            <nav class="main-nav" aria-label="Main Navigation">
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="nav-links">
                     <li><a href="about.html">About</a></li>
                     <li><a href="index.html#pillars">Impact Focus</a></li>
                     <li><a href="programs.html">Programs</a></li>
-                    <li><a href="membership.html" style="color: var(--color-primary)">Membership</a></li>
+                    <li><a href="membership.html" aria-current="page">Membership</a></li>
                 </ul>
-                <a href="membership.html" class="btn btn-primary" aria-label="Join Us or Donate">Join Us</a>
+                <a href="membership.html" class="btn btn-primary">Join Us</a>
             </nav>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+                &#9776;
+            </button>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero" style="min-height: 50vh;">
             <div class="hero-bg-shapes"></div>
             <!-- Offset background photography blending into Mesh Gradient -->
@@ -45,16 +50,22 @@
                         <span class="program-tag highlight">Most Popular</span>
                         <h3>Community Member</h3>
                         <p>Access to our digital community, early RSVP for events, and monthly curated resources for WoC.</p>
-                        <h4 style="font-size: 2rem; margin: 1rem 0; color: var(--color-primary);">$25<span style="font-size:1rem; color:var(--color-text-light)">/mo</span></h4>
-                        <button class="btn btn-primary" style="width: 100%;">Select Tier</button>
+                        <!-- $25/mo — color #475569 on white = 6.2:1, passes AA -->
+                        <h4 style="font-size: 2rem; margin: 1rem 0; color: var(--color-primary);">
+                          $25<span style="font-size:1rem; color:#475569">/mo</span>
+                        </h4>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" aria-label="Select Tier — Community Member">Select Tier</button>
                     </article>
                     
                     <article class="pillar-card fade-in-up delay-1">
                         <span class="program-tag">Workspace</span>
                         <h3>Coworking Member</h3>
                         <p>Unlimited access to the Columbus Commons sanctuary space, free printing, and meeting room hours.</p>
-                        <h4 style="font-size: 2rem; margin: 1rem 0; color: var(--color-primary);">$150<span style="font-size:1rem; color:var(--color-text-light)">/mo</span></h4>
-                        <button class="btn btn-primary" style="width: 100%;">Select Tier</button>
+                        <!-- $150/mo — color #475569 on white = 6.2:1, passes AA -->
+                        <h4 style="font-size: 2rem; margin: 1rem 0; color: var(--color-primary);">
+                          $150<span style="font-size:1rem; color:#475569">/mo</span>
+                        </h4>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" aria-label="Select Tier — Coworking Member">Select Tier</button>
                     </article>
 
                     <article class="pillar-card fade-in-up delay-2">
@@ -62,7 +73,7 @@
                         <h3>Z-Suites</h3>
                         <p>Dedicated private office spaces for teams of 2-4, including all Coworking Member amenities.</p>
                         <h4 style="font-size: 2rem; margin: 1rem 0; color: var(--color-primary);">Contact Us</h4>
-                        <button class="btn btn-secondary" style="width: 100%;">Inquire</button>
+                        <a href="mailto:hello@zorashouse.com" class="btn btn-secondary" style="width: 100%; display: flex;">Inquire</a>
                     </article>
                 </div>
             </div>
@@ -90,5 +101,15 @@
         </div>
     </footer>
     <script type="module" src="/main.js"></script>
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const isOpen = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+    </script>
 </body>
 </html>
